@@ -15,15 +15,23 @@
     <meta property="og:title" content="Zufico — Home Essentials, Curated for Everyday Living">
     <meta property="og:description" content="Thoughtfully selected products for kitchen, home, beauty, and beyond. Shop the collection on Amazon.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://zufico.com">
+    <meta property="og:url" content="https://zufico.com/">
     <meta property="og:image" content="https://zufico.com/pics/og-image.jpg">
+    <meta property="og:site_name" content="Zufico">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Zufico — Home Essentials">
     <meta name="twitter:description" content="Thoughtfully selected products for everyday living.">
+    <meta name="twitter:site" content="@zufico">
 
-    <!-- Favicon (text-based; replace with /favicon.ico once you have a logo) -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22 font-family=%22serif%22 font-weight=%22700%22>Z</text></svg>">
+    <!-- Canonical -->
+    <link rel="canonical" href="https://zufico.com/">
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="/favicon-192.png">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -107,11 +115,12 @@
             height: 72px;
         }
         .nav-brand {
-            font-family: var(--font-display);
-            font-size: 1.4rem;
-            font-weight: 700;
-            letter-spacing: -0.04em;
-            color: var(--text);
+            display: flex;
+            align-items: center;
+        }
+        .nav-brand img {
+            height: 32px;
+            width: auto;
         }
         .nav-links {
             display: flex;
@@ -444,11 +453,9 @@
             gap: var(--space-sm);
             align-items: center;
         }
-        .footer-brand {
-            font-family: var(--font-display);
-            font-weight: 700;
-            color: var(--text);
-            letter-spacing: -0.02em;
+        .footer-brand img {
+            height: 26px;
+            width: auto;
         }
 
         /* ---------- Responsive ---------- */
@@ -489,7 +496,9 @@
 <!-- Navigation -->
 <nav class="nav">
     <div class="container nav-inner">
-        <a href="#top" class="nav-brand">Zufico</a>
+        <a href="#top" class="nav-brand">
+            <img src="/assets/logo/zufico-logo.svg" alt="Zufico">
+        </a>
         <button class="nav-toggle" aria-label="Toggle menu" onclick="document.getElementById('nav-links').classList.toggle('open')">☰</button>
         <ul class="nav-links" id="nav-links">
             <li><a href="#kitchen">Kitchen</a></li>
@@ -788,7 +797,9 @@
 <!-- Footer -->
 <footer>
     <div class="container footer-inner">
-        <div class="footer-brand">Zufico</div>
+        <div class="footer-brand">
+            <img src="/assets/logo/zufico-logo.svg" alt="Zufico">
+        </div>
         <div>© 2026 Zufico. All products shipped through Amazon.</div>
         <div>California, US · <a href="mailto:info@zufico.com">info@zufico.com</a></div>
     </div>
