@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO -->
+    <title>Zufico — Home Essentials, Curated for Everyday Living</title>
+    <meta name="description" content="Zufico is a home essentials brand offering thoughtfully selected kitchen, household, beauty, decor, and car care products. Shop our collection on Amazon.">
+    <meta name="keywords" content="home essentials, kitchen appliances, home decor, household goods, beauty products, car care, Zufico">
+    <meta name="author" content="Zufico">
+
+    <!-- Open Graph / social previews -->
+    <meta property="og:title" content="Zufico — Home Essentials, Curated for Everyday Living">
+    <meta property="og:description" content="Thoughtfully selected products for kitchen, home, beauty, and beyond. Shop the collection on Amazon.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://zufico.com">
+    <meta property="og:image" content="https://zufico.com/pics/og-image.jpg">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Zufico — Home Essentials">
+    <meta name="twitter:description" content="Thoughtfully selected products for everyday living.">
+
+    <!-- Favicon (text-based; replace with /favicon.ico once you have a logo) -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22 font-family=%22serif%22 font-weight=%22700%22>Z</text></svg>">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* ---------- Design tokens ---------- */
+        :root {
+            --bg: #F7F4ED;
+            --bg-warm: #EDE7D7;
+            --surface: #FFFFFF;
+            --border: #E0D9C5;
+            --text: #1C1A15;
+            --text-muted: #6B6557;
+            --accent: #7B4A1F;        /* warm walnut/bronze, not templated terracotta */
+            --accent-hover: #5C3614;
+            --accent-soft: #C8A47A;
+
+            --font-display: 'Bricolage Grotesque', system-ui, sans-serif;
+            --font-body: 'Manrope', system-ui, sans-serif;
+
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 2rem;
+            --space-lg: 4rem;
+            --space-xl: 7rem;
+
+            --radius-sm: 4px;
+            --radius-md: 12px;
+            --max-width: 1280px;
+        }
+
+        /* ---------- Reset & base ---------- */
+        *, *::before, *::after { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            margin: 0;
+            font-family: var(--font-body);
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        img { max-width: 100%; display: block; height: auto; }
+        a { color: var(--text); text-decoration: none; transition: color 0.2s ease; }
+        a:hover { color: var(--accent); }
+        button { font-family: inherit; cursor: pointer; }
+
+        h1, h2, h3, h4 {
+            font-family: var(--font-display);
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin: 0;
+            color: var(--text);
+        }
+
+        .container {
+            width: 100%;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        /* ---------- Navigation ---------- */
+        .nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(247, 244, 237, 0.92);
+            backdrop-filter: saturate(180%) blur(12px);
+            -webkit-backdrop-filter: saturate(180%) blur(12px);
+            border-bottom: 1px solid var(--border);
+        }
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 72px;
+        }
+        .nav-brand {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 700;
+            letter-spacing: -0.04em;
+            color: var(--text);
+        }
+        .nav-links {
+            display: flex;
+            gap: var(--space-md);
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            align-items: center;
+        }
+        .nav-links a {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text);
+            position: relative;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -4px;
+            width: 0;
+            height: 1px;
+            background: var(--accent);
+            transition: width 0.25s ease;
+        }
+        .nav-links a:hover::after { width: 100%; }
+        .nav-cta {
+            background: var(--text);
+            color: var(--bg) !important;
+            padding: 0.6rem 1.2rem;
+            border-radius: var(--radius-sm);
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: background 0.2s ease;
+        }
+        .nav-cta:hover {
+            background: var(--accent) !important;
+            color: var(--bg) !important;
+        }
+        .nav-cta::after { display: none; }
+        .nav-toggle {
+            display: none;
+            background: transparent;
+            border: none;
+            font-size: 1.5rem;
+            padding: 0.5rem;
+            color: var(--text);
+        }
+
+        /* ---------- Hero ---------- */
+        .hero {
+            padding: var(--space-xl) 0 var(--space-lg);
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-eyebrow {
+            font-size: 0.85rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            color: var(--text-muted);
+            margin-bottom: var(--space-md);
+        }
+        .hero-wordmark {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: clamp(4rem, 14vw, 11rem);
+            line-height: 0.9;
+            letter-spacing: -0.05em;
+            color: var(--text);
+            margin: 0;
+        }
+        .hero-wordmark .accent {
+            color: var(--accent);
+            font-style: italic;
+        }
+        .hero-tagline {
+            font-family: var(--font-display);
+            font-size: clamp(1.25rem, 2.4vw, 1.75rem);
+            font-weight: 400;
+            line-height: 1.3;
+            max-width: 620px;
+            margin: var(--space-md) 0 var(--space-md);
+            color: var(--text);
+        }
+        .hero-tagline em {
+            color: var(--accent);
+            font-style: italic;
+        }
+        .hero-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-md);
+            align-items: center;
+            margin-top: var(--space-md);
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.95rem 1.75rem;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            border: none;
+        }
+        .btn-primary {
+            background: var(--text);
+            color: var(--bg);
+        }
+        .btn-primary:hover {
+            background: var(--accent);
+            color: var(--bg);
+        }
+        .btn-secondary {
+            background: transparent;
+            color: var(--text);
+            border: 1px solid var(--border);
+        }
+        .btn-secondary:hover {
+            border-color: var(--text);
+            color: var(--text);
+        }
+        .hero-tag {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .hero-tag::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: var(--accent);
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        /* ---------- Category sections ---------- */
+        .category {
+            padding: var(--space-lg) 0;
+            border-top: 1px solid var(--border);
+        }
+        .category-header {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: var(--space-md);
+            margin-bottom: var(--space-md);
+            flex-wrap: wrap;
+        }
+        .category-title {
+            font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+            font-weight: 600;
+            letter-spacing: -0.025em;
+        }
+        .category-index {
+            font-family: var(--font-display);
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+        .category-description {
+            font-size: 1rem;
+            color: var(--text-muted);
+            max-width: 540px;
+            margin-bottom: var(--space-md);
+        }
+
+        /* ---------- Product grid ---------- */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: var(--space-md);
+        }
+        .product {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        .product:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 32px rgba(28, 26, 21, 0.08);
+            border-color: var(--accent-soft);
+        }
+        .product-image {
+            aspect-ratio: 4 / 3;
+            background: var(--bg-warm);
+            overflow: hidden;
+        }
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .product:hover .product-image img {
+            transform: scale(1.04);
+        }
+        .product-body {
+            padding: 1.1rem 1.2rem 1.3rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            flex: 1;
+        }
+        .product-name {
+            font-family: var(--font-display);
+            font-size: 1.05rem;
+            font-weight: 500;
+            color: var(--text);
+            letter-spacing: -0.01em;
+            line-height: 1.3;
+        }
+        .product-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-top: auto;
+            letter-spacing: 0.01em;
+        }
+        .product-link::after {
+            content: '→';
+            transition: transform 0.2s ease;
+        }
+        .product-link:hover {
+            color: var(--accent-hover);
+        }
+        .product-link:hover::after {
+            transform: translateX(3px);
+        }
+
+        /* ---------- About section ---------- */
+        .about {
+            padding: var(--space-xl) 0;
+            background: var(--bg-warm);
+            margin-top: var(--space-lg);
+        }
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.4fr;
+            gap: var(--space-lg);
+            align-items: start;
+        }
+        .about-eyebrow {
+            font-size: 0.85rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            color: var(--text-muted);
+            margin-bottom: var(--space-sm);
+        }
+        .about-heading {
+            font-size: clamp(2rem, 4vw, 3rem);
+            line-height: 1.1;
+            font-weight: 600;
+            letter-spacing: -0.03em;
+        }
+        .about-body p {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: var(--text);
+            margin: 0 0 1.2rem;
+        }
+        .about-body p:last-child { margin-bottom: 0; }
+
+        /* ---------- Contact / Footer ---------- */
+        .contact {
+            padding: var(--space-xl) 0 var(--space-lg);
+            text-align: center;
+        }
+        .contact-eyebrow {
+            font-size: 0.85rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            color: var(--text-muted);
+            margin-bottom: var(--space-sm);
+        }
+        .contact h2 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 600;
+            letter-spacing: -0.03em;
+            margin-bottom: var(--space-sm);
+        }
+        .contact p {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            max-width: 540px;
+            margin: 0 auto var(--space-md);
+        }
+        .contact-email {
+            font-family: var(--font-display);
+            font-size: clamp(1.5rem, 3vw, 2.25rem);
+            color: var(--accent);
+            font-weight: 500;
+            display: inline-block;
+            border-bottom: 1px solid transparent;
+            padding-bottom: 4px;
+            transition: border-color 0.2s ease;
+        }
+        .contact-email:hover {
+            color: var(--accent-hover);
+            border-bottom-color: var(--accent-hover);
+        }
+
+        footer {
+            border-top: 1px solid var(--border);
+            padding: var(--space-md) 0;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+            align-items: center;
+        }
+        .footer-brand {
+            font-family: var(--font-display);
+            font-weight: 700;
+            color: var(--text);
+            letter-spacing: -0.02em;
+        }
+
+        /* ---------- Responsive ---------- */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 72px;
+                left: 0;
+                right: 0;
+                background: var(--bg);
+                border-bottom: 1px solid var(--border);
+                flex-direction: column;
+                padding: var(--space-md);
+                gap: var(--space-md);
+            }
+            .nav-links.open { display: flex; }
+            .nav-toggle { display: block; }
+            .about-grid { grid-template-columns: 1fr; gap: var(--space-md); }
+            .hero { padding: var(--space-lg) 0; }
+            .category { padding: var(--space-md) 0 var(--space-lg); }
+            .product-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+            .product-body { padding: 0.9rem 1rem 1.1rem; }
+            .product-name { font-size: 0.95rem; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+            html { scroll-behavior: auto; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="nav">
+    <div class="container nav-inner">
+        <a href="#top" class="nav-brand">Zufico</a>
+        <button class="nav-toggle" aria-label="Toggle menu" onclick="document.getElementById('nav-links').classList.toggle('open')">☰</button>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="#kitchen">Kitchen</a></li>
+            <li><a href="#household">Household</a></li>
+            <li><a href="#beauty">Beauty</a></li>
+            <li><a href="#decor">Decor</a></li>
+            <li><a href="#car">Car</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="https://www.amazon.com/stores/zufico" target="_blank" rel="noopener" class="nav-cta">Shop on Amazon</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero" id="top">
+    <div class="container">
+        <p class="hero-eyebrow">Home Essentials · Curated Collection</p>
+        <h1 class="hero-wordmark">Zu<span class="accent">fi</span>co</h1>
+        <p class="hero-tagline">Thoughtfully chosen pieces for the kitchen, the bath, the everyday — <em>shipped through Amazon, ready when you are.</em></p>
+        <div class="hero-meta">
+            <a href="https://www.amazon.com/stores/zufico" target="_blank" rel="noopener" class="btn btn-primary">Shop the full collection on Amazon</a>
+            <a href="#kitchen" class="btn btn-secondary">Browse below</a>
+            <span class="hero-tag">5 categories, growing</span>
+        </div>
+    </div>
+</section>
+
+<!-- Kitchen -->
+<section class="category" id="kitchen">
+    <div class="container">
+        <div class="category-header">
+            <div>
+                <div class="category-index">Collection 01</div>
+                <h2 class="category-title">Kitchen Appliances</h2>
+                <p class="category-description">Everyday tools designed to make the most-used room in the house a little easier.</p>
+            </div>
+        </div>
+        <div class="product-grid">
+            <article class="product">
+                <div class="product-image"><img src="/pics/kitchen/flask.jpg" alt="Tea and Coffee Flask"></div>
+                <div class="product-body">
+                    <h3 class="product-name">Tea &amp; Coffee Flask</h3>
+                    <a href="REPLACE_WITH_AMAZON_ATTRIBUTION_LINK" target="_blank" rel="noopener" class="product-link">View on Amazon</a>
+                </div>
+            </article>
+            <article class="product">
+                <div class="product-image"><img src="/pics/kitchen/lux.jpg" alt="Luxurious Thermos"></div>
+                <div class="product-body">
+                    <h3 class="product-name">Luxurious Thermos</h3>
+                    <a href="REPLACE_WITH_AMAZON_ATTRIBUTION_LINK" target="_blank" rel="noopener" class="product-link">View on Amazon</a>
+                </div>
+            </article>
+            <article class="product">
+                <div class="product-image"><img src="/pics/kitchen/waterheater.jpg" alt="Electric Water Heater"></div>
+                <div class="product-body">
+                    <h3 class="product-name">Water Heater</h3>
+                    <a href="REPLACE_WITH_AMAZON_ATTRIBUTION_LINK" target="_blank" rel="noopener" class="product-link">View on Amazon</a>
+                </div>
+            </article>
+            <article class="product">
+                <div class="product-image"><img src="/pics/kitchen/pot.jpg" alt="Ceramic Tea Pot"></div>
+                <div class="product-body">
+                    <h3 class="product-name">Tea Pot</h3>
+                    <a href="REPLACE_WITH_AMAZON_ATTRIBUTION_LINK" target="_blank" rel="noopener" class="product-link">View on Amazon</a>
+                </div>
+            </article>
+            <article class="product">
+                <div class="product-image"><img src="/pics/kitchen/waterbottle.jpg" alt="Insulated Water Bottle"></div>
+                <div class="product-body">
+                    <h3 class="product-name">Water Bottle</h3>
+                    <a href="REPLACE_WITH_AMAZON_ATTRIBUTION_LINK" target="_blank" rel="noopener" class="product-link">View on Amazon</a>
+                </div>
+            </article>
+            <article class="product">
+                <div class="product-image"><img src="/pics/kitchen/bbq grill.jpg" alt="Indoor BBQ Grill"></div>
+                <div class="product-body">
+                    <h3 class="product-name">Indoor BBQ Grill</h3>
+                    <a href="REPLACE_WITH_AMAZON_ATTRIBUTION_LINK" target="_blank" rel="noopener" class="product-link">View on Amazon</a>
+                </div>
+            </article>
+            <article class="product">
+                <div class="product-image"><img src="/pics/kitchen/tumbler.jpeg" alt="Insulated Water Tumbler"></div>
+                <div class="product-body">
+                    <h3 class="product-name">Water Tumbler</h3>
+                    <a href="REPLACE_WITH_AMAZON_ATTRIBUTION_LINK" target="_blank" rel="noopener" class="product-link">View on Amazon</a>
+                </div>
+            </article>
+            <article class="product">
+                <div class="product-image"><img src="/pics/kitchen/mixer.jpg" alt="Fruit Mixer"></div>
+                <div class="product-body">
+                    <h3 class="product-name">Fruit Mixer</h3>
+                    <a href="REPLACE_WITH_AMAZON_ATTRIBUTION_LINK" target="_blank" rel="noopener" class="product-link">View on Amazon</a>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
+<!-- Health & Household -->
+<section class="category" id="household">
+    <div class="container">
+        <div class="category-header">
+            <div>
+                <div class="category-index">Collection 02</div>
+                <h2 class="category-title">Health &amp; Household</h2>
+                <p class="category-description">Considered basics for sleep, wellness, and the small rituals that hold the day together.</p>
+            </div>
+        </div>
+        <div class="product-grid">
+            <article class="product">
+                <div class="product-image"><img src="/pics/health/detergent_320x315.png" alt="Laundry Detergent"></div>
+                <div class="product-body">
+                    <h3 class="product-name">Laundry Detergent</h3>
+                    <a href="REPLACE_WITH_AMAZON_ATTRIBUTION_LINK" target="_blank" rel="noopener" class="product-link">View on Amazon</a>
+                </div>
+            </article>
+            <article class="product">
+                <div class="product-image"><img src="/pics/health/pillows_320x315.png" alt="Pillows"></div>
+                <div class="product-body">
+                    <h3 class="product-name">Pillows</h3>
+                    <a href="REPLACE_WITH_AMAZON_ATTRIBUTION_LINK" target="_blank" rel="noopener" class="product-link">View on Amazon</a>
+                </div>
+            </article>
+            <article class="product">
+                <div class="product-image"><img src="/pics/health/bedsheets_320x315.png" alt="Bed Sheet Set"></div>
+                <div class="product-body">
+                    <h3 class="product-name">Bed Sheet Set</h3>
+                    <a href="REPLACE_WITH_AMAZON_ATTRIBUTION_LINK" target="_blank" rel="noopener" class="product-link">View on Amazon</a>
+                </div>
+            </article>
+            <article class="product">
+                <div class="product-image"><img src="/pics/health/vitalprotein_320x315.png" alt="Whey Protein"></div>
+                <div class="product-body">
+                    <h3 class="product-name">Whey Protein</h3>
+                    <a href="REPLACE_WITH_AMAZON_ATTRIBUTION_LINK" target="_blank" rel="noopener" class="product-link">View on Amazon</a>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
+<!-- Beauty -->
+<section class="category" id="beauty">
+    <div class="container">
+        <div class="category-header">
+            <div>
+                <div class="category-index">Collection 03</div>
+                <h2 class="category-title">Beauty &amp; Personal Care</h2>
+                <p class="category-description">Skin and self-care, kept simple. Products you'll actually reach for, not the ones that sit on the shelf.</p>
+            </div>
+        </div>
+        <div class="product-grid">
+            <article class="product">
+                <div class="product-image"><img src="/pics/beauty/vitamin-c.png" alt="Vitamin C Serum"></div>
+                <div class="product-body">
+                    <h3 class="product-name">Vitamin C Serum</h3>
+                    <a href="REPLACE_WITH_AMAZON_ATTRIBUTION_LINK" target="_blank" rel="noopener" class="product-link">View on Amazon</a>
+                </div>
+            </article>
+            <article class="product">
+                <div class="product-image"><img src="/pics/beauty/jade-roller.png" alt="Jade Roller"></div>
+                <div class="product-body">
+                    <h3 class="product-name">Jade Roller</h3>
+                    <a href="REPLACE_WITH_AMAZON_ATTRIBUTION_LINK" target="_blank" rel="noopener" class="product-link">View on Amazon</a>
+                </div>
+            </article>
+            <article class="product">
+                <div class="product-image"><img src="/pics/beauty/face-serum.png" alt="Gold Face Serum"></div>
+                <div class="product-body">
+                    <h3 class="product-name">Gold Face Serum</h3>
+                    <a href="REPLACE_WITH_AMAZON_ATTRIBUTION_LINK" target="_blank" rel="noopener" class="product-link">View on Amazon</a>
+                </div>
+            </article>
+            <article class="product">
+                <div class="product-image"><img src="/pics/beauty/cream.jpg" alt="Healing Foot Cream"></div>
+                <div class="product-body">
+                    <h3 class="product-name">Healing Foot Cream</h3>
+                    <a href="REPLACE_WITH_AMAZON_ATTRIBUTION_LINK" target="_blank" rel="noopener" class="product-link">View on Amazon</a>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
+<!-- Home & Kitchen Decor -->
+<section class="category" id="decor">
+    <div class="container">
+        <div class="category-header">
+            <div>
+                <div class="category-index">Collection 04</div>
+                <h2 class="category-title">Home &amp; Kitchen Decor</h2>
+                <p class="category-description">Small touches that make a room feel finished — the kind that quietly change how a space feels.</p>
+            </div>
+        </div>
+        <div class="product-grid">
+            <article class="product">
+                <div class="product-image"><img src="/pics/home decore/homedec1.png" alt="Home Decor Piece"></div>
+                <div class="product-body">
+                    <h3 class="product-name">Home Decor</h3>
+                    <a href="REPLACE_WITH_AMAZON_ATTRIBUTION_LINK" target="_blank" rel="noopener" class="product-link">View on Amazon</a>
+                </div>
+            </article>
+            <article class="product">
+                <div class="product-image"><img src="/pics/home decore/homedec2.png" alt="Home Decor Piece"></div>
+                <div class="product-body">
+                    <h3 class="product-name">Home Decor</h3>
+                    <a href="REPLACE_WITH_AMAZON_ATTRIBUTION_LINK" target="_blank" rel="noopener" class="product-link">View on Amazon</a>
+                </div>
+            </article>
+            <article class="product">
+                <div class="product-image"><img src="/pics/home decore/kitDec1.png" alt="Kitchen Decor Piece"></div>
+                <div class="product-body">
+                    <h3 class="product-name">Kitchen Decor</h3>
+                    <a href="REPLACE_WITH_AMAZON_ATTRIBUTION_LINK" target="_blank" rel="noopener" class="product-link">View on Amazon</a>
+                </div>
+            </article>
+            <article class="product">
+                <div class="product-image"><img src="/pics/home decore/kitDec2.png" alt="Kitchen Decor Piece"></div>
+                <div class="product-body">
+                    <h3 class="product-name">Kitchen Decor</h3>
+                    <a href="REPLACE_WITH_AMAZON_ATTRIBUTION_LINK" target="_blank" rel="noopener" class="product-link">View on Amazon</a>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
+<!-- Car Care -->
+<section class="category" id="car">
+    <div class="container">
+        <div class="category-header">
+            <div>
+                <div class="category-index">Collection 05</div>
+                <h2 class="category-title">Car Care</h2>
+                <p class="category-description">The interior matters too. Practical gear to keep the daily drive tidy and quiet.</p>
+            </div>
+        </div>
+        <div class="product-grid">
+            <article class="product">
+                <div class="product-image"><img src="/pics/car/vaccum.jpg" alt="Car Vacuum Cleaner"></div>
+                <div class="product-body">
+                    <h3 class="product-name">Car Vacuum Cleaner</h3>
+                    <a href="REPLACE_WITH_AMAZON_ATTRIBUTION_LINK" target="_blank" rel="noopener" class="product-link">View on Amazon</a>
+                </div>
+            </article>
+            <article class="product">
+                <div class="product-image"><img src="/pics/car/dashcam.png" alt="Car Dashcam"></div>
+                <div class="product-body">
+                    <h3 class="product-name">Car Dashcam</h3>
+                    <a href="REPLACE_WITH_AMAZON_ATTRIBUTION_LINK" target="_blank" rel="noopener" class="product-link">View on Amazon</a>
+                </div>
+            </article>
+            <article class="product">
+                <div class="product-image"><img src="/pics/car/mats.png" alt="Car Floor Mats"></div>
+                <div class="product-body">
+                    <h3 class="product-name">Floor Mats</h3>
+                    <a href="REPLACE_WITH_AMAZON_ATTRIBUTION_LINK" target="_blank" rel="noopener" class="product-link">View on Amazon</a>
+                </div>
+            </article>
+            <article class="product">
+                <div class="product-image"><img src="/pics/car/seatcovers.jpg" alt="Car Seat Covers"></div>
+                <div class="product-body">
+                    <h3 class="product-name">Seat Covers</h3>
+                    <a href="REPLACE_WITH_AMAZON_ATTRIBUTION_LINK" target="_blank" rel="noopener" class="product-link">View on Amazon</a>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
+<!-- About -->
+<section class="about" id="about">
+    <div class="container about-grid">
+        <div>
+            <p class="about-eyebrow">About Zufico</p>
+            <h2 class="about-heading">A small brand,<br>thoughtfully built.</h2>
+        </div>
+        <div class="about-body">
+            <p>Zufico is a curated home essentials brand. We source and sell a tight collection of products across the kitchen, bath, beauty, decor, and car care — chosen the way you'd choose them for your own home: by usefulness first, then by feel.</p>
+            <p>Every order is fulfilled through Amazon, which means quick shipping, easy returns, and the same buyer protection you already trust. The catalog you see here is a window into our full collection — click through to view, read reviews, and order on Amazon.</p>
+            <p>Have a question or a suggestion? We read every email.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Contact -->
+<section class="contact" id="contact">
+    <div class="container">
+        <p class="contact-eyebrow">Get in touch</p>
+        <h2>Questions? Reach out.</h2>
+        <p>We're a small team and we answer our own email. Write us anytime.</p>
+        <a href="mailto:info@zufico.com" class="contact-email">info@zufico.com</a>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="container footer-inner">
+        <div class="footer-brand">Zufico</div>
+        <div>© 2026 Zufico. All products shipped through Amazon.</div>
+        <div>California, US · <a href="mailto:info@zufico.com">info@zufico.com</a></div>
+    </div>
+</footer>
+
+<script>
+    // Close mobile nav after clicking a link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            document.getElementById('nav-links').classList.remove('open');
+        });
+    });
+</script>
+
+</body>
+</html>
